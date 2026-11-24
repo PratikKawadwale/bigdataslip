@@ -1,0 +1,15 @@
+a. Upload a local file called data.csv to HDFS.
+hdfs dfs -put data.csv /
+
+
+b. Verify that data.csv is uploaded.
+hdfs dfs -ls /
+
+
+c. Copy data.csv to a new directory called datadir.
+hdfs dfs -mkdir /datadir
+hdfs dfs -cp /data.csv /datadir/
+
+
+d. Verify the file contents in datadir.
+hdfs dfs -cat /datadir/data.csv

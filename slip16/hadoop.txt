@@ -1,0 +1,14 @@
+a. List the files in /user/data using an absolute path.
+hdfs dfs -ls /user/data
+
+
+b. Change into /user/data/subdir using an absolute path.
+hdfs dfs -ls /user/data/subdir
+
+
+c. List the files in the current directory.
+hdfs dfs -ls .
+
+
+d. Change into the root directory.
+hdfs dfs -ls /

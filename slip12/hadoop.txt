@@ -1,0 +1,16 @@
+a. Create input and output directories in HDFS.
+hdfs dfs -mkdir /input
+hdfs dfs -mkdir /output
+
+
+b. Upload data.csv to the input directory.
+hdfs dfs -put data.csv /input/
+
+
+c. Copy data.csv to the output directory.
+hdfs dfs -cp /input/data.csv /output/
+
+
+d. Verify the file permissions of data.csv.
+hdfs dfs -ls /input/data.csv
+hdfs dfs -ls /output/data.csv

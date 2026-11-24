@@ -1,0 +1,44 @@
+a. Load the data from employee.csv.
+employee = LOAD 'employee.csv'
+USING PigStorage(',')
+AS (eno:int, ename:chararray, salary:double, dept:chararray, age:int);
+
+
+b. Dump all employees of Computer Department.
+computer_dept = FILTER employee BY dept == 'Computer Department';
+DUMP computer_dept;
+
+
+c. Group the employees by department.
+grouped_dept = GROUP employee BY dept;
+DUMP grouped_dept;
+
+
+d. Dump department-wise employee having maximum age.
+grouped_dept = GROUP employee BY dept;
+
+max_age = FOREACH grouped_dept GENERATE
+    group AS dept,
+    MAX(employee.age) AS max_age;
+
+result = JOIN employee BY (dept, age),
+         max_age BY (dept, max_age);
+
+final_result = FOREACH result GENERATE
+    employee::eno,
+    employee::ename,
+    employee::salary,
+    employee::dept,
+    employee::age;
+
+DUMP final_result;
+
+
+e. Dump department-wise sum of salary.
+grouped_dept = GROUP employee BY dept;
+
+salary_sum = FOREACH grouped_dept GENERATE
+    group AS dept,
+    SUM(employee.salary) AS total_salary;
+
+DUMP salary_sum;

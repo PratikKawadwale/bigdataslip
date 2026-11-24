@@ -1,0 +1,17 @@
+1. Hadoop Shell Commands
+a. List the files in the /user directory.
+hdfs dfs -ls /user
+
+
+b. Create a new directory called navigation.
+hdfs dfs -mkdir /navigation
+
+
+c. Change into the navigation directory.
+
+HDFS does not support the cd command. Use the directory path directly in subsequent commands.
+hdfs dfs -ls /navigation
+
+
+d. Create a subdirectory called subnav.
+hdfs dfs -mkdir /navigation/subnav

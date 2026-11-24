@@ -1,0 +1,27 @@
+a. Load the file student.csv.
+student = LOAD 'student.csv'
+USING PigStorage(',')
+AS (Rollno:int, Sname:chararray, age:int, class:chararray, phone:chararray, city:chararray);
+
+
+b. Group the relation by age.
+grouped_age = GROUP student BY age;
+DUMP grouped_age;
+
+
+c. Display all students of ComputerDepartment.
+computer_dept = FILTER student BY class == 'ComputerDepartment';
+DUMP computer_dept;
+
+
+d. Display class-wise number of students.
+grouped_class = GROUP student BY class;
+student_count = FOREACH grouped_class GENERATE
+    group AS class,
+    COUNT(student) AS total_students;
+DUMP student_count;
+
+
+e. Display all students in descending order of student name.
+sorted_student = ORDER student BY Sname DESC;
+DUMP sorted_student;

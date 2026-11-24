@@ -1,0 +1,30 @@
+1. Create a database named Udetails.
+CREATE DATABASE Udetails;
+
+
+2. Use the created database.
+USE Udetails;
+
+
+3. Create a table UserData.
+CREATE TABLE UserData (uid INT,name STRING,age INT,gender STRING,occupation STRING,zipcode STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+
+4. Load data from local storage.
+LOAD DATA LOCAL INPATH '/home/abc/data/UData.txt'
+INTO TABLE UserData;
+
+
+5. Create the same table partitioned on gender.
+CREATE TABLE UserData_Partitioned (uid INT,name STRING,age INT,occupation STRING,zipcode STRING)
+PARTITIONED BY (gender STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+
+6. Find the number of users for each age.
+SELECT age, COUNT(*) AS total_users
+FROM UserData
+GROUP BY age;

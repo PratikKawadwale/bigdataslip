@@ -1,0 +1,6 @@
+101,Laptop,500
+102,Mobile,300
+101,Mouse,200
+103,Keyboard,700
+102,Headphone,400
+103,Mouse,300

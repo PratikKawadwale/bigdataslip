@@ -1,0 +1,14 @@
+a. List the files in the root directory.
+hdfs dfs -ls /
+
+
+b. Create a new directory called test.
+hdfs dfs -mkdir /test
+
+
+c. Change into the test directory.
+hdfs dfs -cd /test
+
+
+d. Create a subdirectory called subtest.
+hdfs dfs -mkdir /test/subtest

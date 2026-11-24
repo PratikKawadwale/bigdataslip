@@ -1,0 +1,13 @@
+
+a. Create a new directory called data in HDFS.
+  hdfs dfs -mkdir /data
+
+b. Upload a file called sample.txt from the local file system to the data directory in HDFS.
+  hdfs dfs -put sample.txt /data/
+
+c. List the files in the data directory.
+  hdfs dfs -ls /data
+
+d. Move the file sample.txt to another directory in HDFS.
+  hdfs dfs -mkdir /backup
+  hdfs dfs -mv /data/sample.txt /backup/

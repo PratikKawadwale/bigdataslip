@@ -1,0 +1,33 @@
+a. Load student_data.txt with comma-separated fields.
+student = LOAD 'student_data.txt'
+USING PigStorage(',')
+AS (id:int, firstname:chararray, lastname:chararray,
+    age:int, phone:chararray, city:chararray);
+
+
+b. Display the loaded relation on the screen.
+DUMP student;
+
+
+c. Describe the relation.
+DESCRIBE student;
+
+
+d. Group the relation by age.
+grouped_age = GROUP student BY age;
+DUMP grouped_age;
+
+
+e. Group the relation by all columns.
+grouped_all = GROUP student BY (id, firstname, lastname, age, phone, city);
+DUMP grouped_all;
+
+
+f. Find city-wise average age.
+grouped_city = GROUP student BY city;
+
+avg_age = FOREACH grouped_city GENERATE
+    group AS city,
+    AVG(student.age) AS average_age;
+
+DUMP avg_age;

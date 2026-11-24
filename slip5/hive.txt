@@ -1,0 +1,28 @@
+1. Create a database named IRating.
+CREATE DATABASE IRating;
+
+
+2. Use the created database.
+USE IRating;
+
+
+3. Create a table Rating with fields separated by tab (\t).
+CREATE TABLE Rating (userid INT,item_id INT,rating FLOAT,timestamp BIGINT)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t';
+
+
+4. Load data from local storage.
+LOAD DATA LOCAL INPATH '/home/user/data/Item_Rating'
+INTO TABLE Rating;
+
+
+5. Display the first 20 rows of the table.
+SELECT * FROM Rating
+LIMIT 20;
+
+
+6. Find the total number of ratings for each user.
+SELECT userid, COUNT(*) AS total_ratings
+FROM Rating
+GROUP BY userid;

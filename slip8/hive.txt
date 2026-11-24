@@ -1,0 +1,35 @@
+1. Create a database named StudDetail.
+CREATE DATABASE StudDetail;
+
+
+2. Use the created database.
+USE StudDetail;
+
+
+3. Create a table Student with the given fields, separated by comma.
+CREATE TABLE Student (
+    Student_id INT,
+    age INT,
+    class STRING,
+    Subject_opted STRING,
+    marks INT
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+
+4. Load data from local storage.
+LOAD DATA LOCAL INPATH '/home/user/data/stud_marks'
+INTO TABLE Student;
+
+
+5. Find the total number of students per class.
+SELECT class, COUNT(*) AS total_students
+FROM Student
+GROUP BY class;
+
+
+6. Find subject-wise maximum marks.
+SELECT Subject_opted, MAX(marks) AS maximum_marks
+FROM Student
+GROUP BY Subject_opted;

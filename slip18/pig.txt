@@ -1,0 +1,27 @@
+a. Load the file Movie.csv.
+movie = LOAD 'Movie.csv'
+USING PigStorage(',')
+AS (Movie_id:int, M_title:chararray, Release_year:int, Votes:int, score:float);
+
+
+b. Dump the titles of movies that have more than 100 votes.
+filtered = FILTER movie BY Votes > 100;
+result = FOREACH filtered GENERATE M_title;
+DUMP result;
+
+
+c. Dump the title and votes of movies made in 2020.
+movies_2020 = FILTER movie BY Release_year == 2020;
+result = FOREACH movies_2020 GENERATE M_title, Votes;
+DUMP result;
+
+
+d. Dump the votes and score of the movie Bhoot.
+bhoot = FILTER movie BY M_title == 'Bhoot';
+result = FOREACH bhoot GENERATE Votes, score;
+DUMP result;
+
+
+e. Group Movie relation by votes.
+grouped_movies = GROUP movie BY Votes;
+DUMP grouped_movies;

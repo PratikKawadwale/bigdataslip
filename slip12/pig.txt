@@ -1,0 +1,25 @@
+a. Load a file employee.csv.
+employee = LOAD 'employee.csv'
+USING PigStorage(',')
+AS (eno:int, ename:chararray, salary:double, dept:chararray, age:int);
+
+
+b. Group the relation by salary.
+grouped_salary = GROUP employee BY salary;
+DUMP grouped_salary;
+
+
+c. Display all employees of ComputerDepartment.
+computer_dept = FILTER employee BY dept == 'ComputerDepartment';
+DUMP computer_dept;
+
+
+d. Display department-wise sum of salary.
+grouped_dept = GROUP employee BY dept;
+salary_sum = FOREACH grouped_dept GENERATE group AS dept, SUM(employee.salary) AS total_salary;
+DUMP salary_sum;
+
+
+e. Dump all employees in descending order of employee name.
+sorted_employee = ORDER employee BY ename DESC;
+DUMP sorted_employee;

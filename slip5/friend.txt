@@ -1,0 +1,10 @@
+1,Pratik,25,120
+2,Rahul,24,95
+3,Amit,23,80
+4,Akash,25,110
+5,Sagar,22,75
+6,Rohan,24,90
+7,Vijay,23,100
+8,Sumit,26,85
+9,Ankit,22,70
+10,Suraj,25,105

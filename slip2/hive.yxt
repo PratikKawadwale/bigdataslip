@@ -1,0 +1,35 @@
+1. Create a database named Udetails.
+CREATE DATABASE Udetails;
+
+
+2. Use the above-created database.
+USE Udetails;
+
+
+3. Create a table UserData with the given fields, separated by commas.
+CREATE TABLE UserData (
+    uid INT,
+    name STRING,
+    age INT,
+    gender STRING,
+    occupation STRING,
+    zipcode STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+
+4. Load data from local storage into the table.
+LOAD DATA LOCAL INPATH '/home/abc/data/UData.txt'
+INTO TABLE UserData;
+
+5. Find the average age of all females.
+SELECT AVG(age) AS average_age
+FROM UserData
+WHERE gender = 'Female';
+
+
+6. Find the number of users who are IT Professionals.
+SELECT COUNT(*) AS total_users
+FROM UserData
+WHERE occupation = 'IT Professionals';

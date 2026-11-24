@@ -1,0 +1,31 @@
+a. Load a file employee.csv.
+employee = LOAD 'employee.csv'
+USING PigStorage(',')
+AS (eno:int, ename:chararray, salary:double, dept:chararray, age:int);
+
+
+b. Display all employees of ComputerDepartment.
+computer_dept = FILTER employee BY dept == 'ComputerDepartment';
+DUMP computer_dept;
+
+
+c. Dump all employees whose age is less than 30.
+young_employees = FILTER employee BY age < 30;
+DUMP young_employees;
+
+
+d. Group the relation by department.
+grouped_dept = GROUP employee BY dept;
+DUMP grouped_dept;
+
+
+e. Dump employee having maximum age.
+grouped_all = GROUP employee ALL;
+
+max_age = FOREACH grouped_all GENERATE MAX(employee.age) AS max_age;
+
+max_employee = JOIN employee BY age, max_age BY max_age;
+
+result = FOREACH max_employee GENERATE employee::eno, employee::ename, employee::salary, employee::dept, employee::age;
+
+DUMP result;

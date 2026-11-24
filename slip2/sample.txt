@@ -1,0 +1,5 @@
+Hello Hadoop
+Welcome to Big Data
+Hadoop is used for distributed storage
+MapReduce is used for data processing
+This is my first HDFS practical

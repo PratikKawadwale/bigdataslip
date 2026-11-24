@@ -1,0 +1,15 @@
+1. Hadoop Shell Commands [2 Marks]
+a. Create a new directory called test.
+hdfs dfs -mkdir /test
+
+
+b. Change into the test directory.
+hdfs dfs -cd /test
+
+
+c. Create a subdirectory called subtest.
+hdfs dfs -mkdir /test/subtest
+
+
+d. List the files in the subtest directory.
+hdfs dfs -ls /test/subtest

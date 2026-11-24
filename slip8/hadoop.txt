@@ -1,0 +1,16 @@
+a. Create two files called file1.txt and file2.txt in HDFS.
+echo "Hello Hadoop" | hdfs dfs -put - /file1.txt
+
+echo "Welcome to Big Data" | hdfs dfs -put - /file2.txt
+
+
+b. Concatenate file1.txt and file2.txt into a new file called aggregated.txt.
+hdfs dfs -cat /file1.txt /file2.txt | hdfs dfs -put - /aggregated.txt
+
+
+c. Verify the contents of aggregated.txt.
+hdfs dfs -cat /aggregated.txt
+
+
+d. Copy a file from local drive to Hadoop.
+hdfs dfs -put sample.txt /

@@ -1,0 +1,27 @@
+a. Load a file Movie.csv.
+movie = LOAD 'Movie.csv'
+USING PigStorage(',')
+AS (Movie_id:int, M_title:chararray, Release_year:int, Votes:int, score:float);
+
+
+b. Dump titles of movies that have a score higher than 8.
+high_score = FILTER movie BY score > 8;
+result = FOREACH high_score GENERATE M_title;
+DUMP result;
+
+
+c. Dump the title and year of movies made in 1980.
+movies_1980 = FILTER movie BY Release_year == 1980;
+result = FOREACH movies_1980 GENERATE M_title, Release_year;
+DUMP result;
+
+
+d. Dump the top 5 highest vote-getting movies.
+sorted_movies = ORDER movie BY Votes DESC;
+top_5 = LIMIT sorted_movies 5;
+DUMP top_5;
+
+
+e. Group Movie relation by votes.
+grouped_movies = GROUP movie BY Votes;
+DUMP grouped_movies;
